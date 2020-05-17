@@ -871,7 +871,7 @@ class Register(object):
         :return:
         """
         if self.usable.get("token"):
-            url = URL+"/regsave.do"
+            url = URL + "/regsave.do"
             data = self.usable
             res = requests.post(url=url, json=data)
             if res.text == "OK":
@@ -897,6 +897,12 @@ def do_register_log():
     phone = GetNumberCodeByBM(aip_token).do_get_phone_number()
     if isinstance(phone, dict):
         return phone
+    res_phone = get_get_user_do(phone=phone)
+    if res_phone.get("status") in (0, 2):
+        return {
+            "status": 1,
+            "msg": "该账号已存在账号中心",
+        }
     data = {
         "user": phone,
         "password": pwd

@@ -39,8 +39,6 @@ def log_wechat_author(taskid, app_id, success, vxid, phone=""):
     print(res.text)
 
 
-
-
 def get_get_user_do(phone):
     """
     根据电话号码获取指定账号的登录信息
@@ -540,7 +538,6 @@ def get_zhima_ip():
             "status": 30,
             "msg": "获取芝麻ip失败"
         }
-
 
 
 RoomCode = ["E", "L", "Q", "N", "W1"]
